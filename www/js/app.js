@@ -1,85 +1,86 @@
-// Ionic Starter App
+(function () {
+    'use strict';
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+    angular.module('app')
+        .config(state)
+        .config(restangular)
+        .run(platform);
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-
+    function state($urlRouterProvider) {
+        //$urlRouterProvider.otherwise('/organizations');
     }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
 
-.config(function($stateProvider, $urlRouterProvider) {
+  
+    function restangular(RestangularProvider) {
+        RestangularProvider.setRequestSuffix('/');
+        RestangularProvider.setDefaultHttpFields({
+            timeout: 30000
+        });
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
+        RestangularProvider
+            .addResponseInterceptor(djangoPaginationInterceptor);
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+        function djangoPaginationInterceptor(data, operation) {
+            var cleanedData;
 
-  // Each tab has its own nav history stack:
+            if (operation === 'getList' && data.results) {
+                cleanedData = data.results;
+                cleanedData.metadata = _.omit(data, 'results');
+                cleanedData.metadata.nextPage =
+                    getQueryParam(cleanedData.metadata.next)['page'];
+            } else {
+                cleanedData = data;
+            }
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+            return cleanedData;
         }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+
+        function getQueryParam(url) {
+            var query = url ? url.substring(url.indexOf('?') + 1) : false;
+            if (!query) {
+                return {};
+            }
+
+            return _.chain(query.split('&'))
+                .map(function(params) {
+                    var p = params.split('=');
+                    return [p[0], decodeURIComponent(p[1])];
+                })
+                .object()
+                .value();
         }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
     }
-  });
+   
+    function platform($ionicPlatform) {
+        $ionicPlatform.ready(function () {
+            if (window.cordova &&
+                window.cordova.plugins &&
+                window.cordova.plugins.Keyboard)
+            {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
+            if (window.StatusBar) {
+                StatusBar.styleDefault();
+            }
+        });
+    }
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+    function backState($rootScope, $state, $ionicPlatform) {
+        var $ionicGoBack = $rootScope.$ionicGoBack;
 
-});
+        $rootScope.$ionicGoBack = goBack;
+        $ionicPlatform.registerBackButtonAction(goBack, 101);
+
+        function goBack() {
+            switch ($state.current.name) {
+                case 'login':
+                    ionic.Platform.exitApp();
+                    break;
+                default:
+                    $ionicGoBack();
+                    break;
+            }
+        }
+    }
+})();
