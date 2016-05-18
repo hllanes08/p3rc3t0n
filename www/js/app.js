@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .config(state)
+	.config(state)
         .config(restangular)
         .run(platform);
 

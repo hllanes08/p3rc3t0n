@@ -1,8 +1,8 @@
 {
   "name": "perception",
-  "app_id": "",
+  "app_id": "e1aba515",
   "watchPatterns": [
-      "www/**/*",
-      "!www/lib/**/*"
+    "www/**/*",
+    "!www/lib/**/*"
   ]
 }
