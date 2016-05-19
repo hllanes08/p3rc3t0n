@@ -3,8 +3,7 @@
 
      angular.module('app', [
       'ionic',
-      'ionic.service.core',
-      'ionic.service.analytics',
+      'ngCordova',
       'restangular'
     ]);
 })();

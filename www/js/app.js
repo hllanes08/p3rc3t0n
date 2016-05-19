@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('app')
-	.config(state)
-        .config(interceptors)
+	//.config(state)
+        //.config(interceptors)
         .config(restangular)
         .run(platform);
 
@@ -55,7 +55,6 @@
     function platform($ionicPlatform) {
         $ionicPlatform.ready(function () {
             if (window.cordova &&
-                window.cordova.plugins &&
                 window.cordova.plugins.Keyboard)
             {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
