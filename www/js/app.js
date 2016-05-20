@@ -2,56 +2,19 @@
     'use strict';
 
     angular.module('app')
-	//.config(state)
-        //.config(interceptors)
+	      .config(state)
         .config(restangular)
         .run(platform);
 
     function state($urlRouterProvider) {
-        //$urlRouterProvider.otherwise('/organizations');
+        $urlRouterProvider.otherwise('/items');
     }
 
-  
+
     function restangular(RestangularProvider) {
         RestangularProvider.setRequestSuffix('/');
-        RestangularProvider.setDefaultHttpFields({
-            timeout: 30000
-        });
-
-        RestangularProvider
-            .addResponseInterceptor(djangoPaginationInterceptor);
-
-        function djangoPaginationInterceptor(data, operation) {
-            var cleanedData;
-
-            if (operation === 'getList' && data.results) {
-                cleanedData = data.results;
-                cleanedData.metadata = _.omit(data, 'results');
-                cleanedData.metadata.nextPage =
-                    getQueryParam(cleanedData.metadata.next)['page'];
-            } else {
-                cleanedData = data;
-            }
-
-            return cleanedData;
-        }
-
-        function getQueryParam(url) {
-            var query = url ? url.substring(url.indexOf('?') + 1) : false;
-            if (!query) {
-                return {};
-            }
-
-            return _.chain(query.split('&'))
-                .map(function(params) {
-                    var p = params.split('=');
-                    return [p[0], decodeURIComponent(p[1])];
-                })
-                .object()
-                .value();
-        }
     }
-   
+
     function platform($ionicPlatform) {
         $ionicPlatform.ready(function () {
             if (window.cordova &&
@@ -66,7 +29,7 @@
         });
     }
     function interceptors($httpProvider){
-	$httpProvider.defaults.withCredentials = true;
+	      $httpProvider.defaults.withCredentials = true;
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.interceptors.push('csrfInterceptor');
         $httpProvider.interceptors.push('errorInterceptor');
