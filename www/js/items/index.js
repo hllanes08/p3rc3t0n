@@ -3,21 +3,17 @@
 
     angular.module('app')
             .config(state);
-    function state($stateProvider){
+    function state($stateProvider,$urlRouterProvideR){
+	console.log('Loading provider');
         $stateProvider.state('items',{
   	    url: '/items',
   	    views: {
-          '': {
+             'content': {
   		    templateUrl: 'js/items/template.html',
   		    controller: 'ItemsController',
-  		    controllerAs: 'vm'
-  		    }
-  	    },
-  	    resolve: {
-          items: function(){
-  		          //return Restangular.all('items').getList();
-  		    }
-       }
+  		    //controllerAs: 'vm'
+  		    }  	       
+         }
 	});
    }
 });

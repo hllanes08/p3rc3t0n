@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-	      .config(state)
+	 .config(state)
         .config(restangular)
         .run(platform);
 
@@ -12,7 +12,7 @@
 
 
     function restangular(RestangularProvider) {
-        RestangularProvider.setRequestSuffix('/');
+	//RestangularProvider.setRequestSuffix('/');
     }
 
     function platform($ionicPlatform) {
@@ -29,7 +29,7 @@
         });
     }
     function interceptors($httpProvider){
-	      $httpProvider.defaults.withCredentials = true;
+	$httpProvider.defaults.withCredentials = true;
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.interceptors.push('csrfInterceptor');
         $httpProvider.interceptors.push('errorInterceptor');
