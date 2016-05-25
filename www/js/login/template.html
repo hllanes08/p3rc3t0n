@@ -1,8 +1,33 @@
 <ion-view hide-nav-bar="true" cache-view="false">
     <div class="bar bar-positive">
       <h1 class="title">Iniciar Sesion</h1>
-      <ion-content class="has-header">
-        
-      </ion-content>
     </div>
+      <ion-content class="has-header">
+        <form novalidate name="LoginForm">
+          <div class="list list-inset">
+            <label class="item item-input">
+              <input
+                  type="text"
+                  placeholder="Usuario"
+                  required
+                  ng-model="vm.credentials.username">
+            </label>
+            <label class="item item-input">
+              <input
+                  type="password"
+                  placeholder="Contraseña"
+                  required
+                  ng-model="vm.credentials.password">
+            </label>
+          </div>
+          <div class="padding">
+            <button
+               class="button button-block button-positive"
+               ng-disabled="LoginForm.$invalid"
+               ng-autodisable>
+               Iniciar
+            </button>
+          </div>
+        </form>
+      </ion-content>
 </ion-view>
