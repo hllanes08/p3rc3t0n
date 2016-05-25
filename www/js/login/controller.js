@@ -7,13 +7,38 @@
    function LoginController(
       $scope,
       $state,
-      $ionicLoading
+      $ionicLoading,
+      $ionicPopup,
+      $ionicHistory,
+      authService
    ){
       var vm = this;
-      vm.login = login;
-
+      vm.login = login;  
+      $scope.$on('$ionicView.enter',onViewEntered);
     function login(credentials){
         $ionicLoading.show();
+
+	return authService.login(credentials)
+	         .then(redirectToItems)
+	         .catch(notifyFailure)
+		 .finally($ionicLaading.hide)
+    }
+    function redirectToItems(){
+        $state.go('items');
+    }
+    function notifyFailure(error){
+        if(error.status === 400){
+	    $ionicPopup.alert({
+	        title: 'Advertencia',
+		template: 'Usario o Contrasenya Invalidos.',
+		okText: 'Aceptar',
+		okType: 'button-positive'    
+	    });
+	}
+    }
+    function onViewEntered(){
+        $ionicHistory.clearHistory();
+	$ionicHistory.clearCache();
     }
   }
 })();
