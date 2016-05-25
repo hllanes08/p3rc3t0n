@@ -9,7 +9,7 @@
 	.run(platform);
      
     function state($urlRouterProvider) {
-        $urlRouterProvider.otherwise('/items');
+        $urlRouterProvider.otherwise('/login');
     }
     
     function localStorageService(localStorageServiceProvider){
