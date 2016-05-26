@@ -21,4 +21,4 @@
       $httpBackend.whenPOST(/api\/auth\/authorize\//).respond(400);
 
    }
-});
+})();
