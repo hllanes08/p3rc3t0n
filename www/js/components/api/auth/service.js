@@ -20,8 +20,9 @@
 	function login(credentials){
 	    var request = {
 	        username: credentials.username,
-		      password: credentials.password
+		 password: credentials.password
 	    };
+	   
             return Restangular
 	            .all('auth')
 	            .customPOST(request,'authorize')
@@ -43,6 +44,8 @@
 
 	}
 	function logout(){
+            userService.clear();
+	    $state.go('login',{},{reload:true});
 	}
     }
 

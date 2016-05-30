@@ -4,6 +4,7 @@
     angular.module('app')
 	.config(state)
         .config(restangular)
+	.config(interceptors)
 	.config(localStorageService)
 	.constant('_',_)
 	.run(platform);
@@ -38,7 +39,6 @@
 	$httpProvider.defaults.withCredentials = true;
         $httpProvider.interceptors.push('authInterceptor');
         $httpProvider.interceptors.push('csrfInterceptor');
-        $httpProvider.interceptors.push('errorInterceptor');
     }
     function backState($rootScope, $state, $ionicPlatform) {
         var $ionicGoBack = $rootScope.$ionicGoBack;
