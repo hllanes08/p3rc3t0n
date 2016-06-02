@@ -15,6 +15,7 @@
     <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.js"></script>
     <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="lib/restangular/dist/restangular.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <!-- script src="cordova.js"></script>-->
@@ -28,15 +29,19 @@
     <script src="js/login/index.js"></script>
     <script src="js/login/controller.js"></script>
 
-    <script src="components/users/service.js"></script>
-    <script src="components/api/auth/service.js"></script>
+    <script src="js/components/api/auth/interceptor.js"></script> 
+    <script src="js/components/api/csrf/interceptor.js"></script>
+    <script src="js/components/api/auth/service.js"></script>
+    <script src="js/components/users/service.js"></script>
+   
 
     <script src="lib/ngCordova/dist/ng-cordova-mocks.js"></script>
     <script src="lib/angular-mocks/angular-mocks.js"></script>
-    <script src="enviroment/development/restangular.js"></script>
-  <!--  <script src="enviroment/local/restangular.js"></script>
-    <script src="enviroment/local/module.js"></script>
-    <script src="enviroment/local/server.js"></script> -->
+
+    <script src="enviroment/development/restangular.config.js"></script>
+    <!--<script src="enviroment/local/module.js"></script>
+    <script src="enviroment/local/server.js"></script>-->
+
   </head>
   <body ng-app="app">
      <ion-nav-view></ion-nav-view>

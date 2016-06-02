@@ -5,6 +5,7 @@
       'ionic',
       'ionic.service.core', 
       'ngCordova',
+      'ngCookies',
       'LocalStorageModule',
       'restangular'
     ]);
