@@ -12,7 +12,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://localhost:8100/api"
+      "proxyUrl": "http://localhost:8101/api"
     }
   ]
 }
