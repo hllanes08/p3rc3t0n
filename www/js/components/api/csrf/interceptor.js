@@ -14,12 +14,13 @@
 	};
 	return factory;
 
-	function request(config){
-	    console.log('Loading CSRF ');
+	function request(config){ 
 	    config.headers = config.headers || {};
-	    if(allowedMethods.indexOf(config.method) === -1){
+	    console.log(allowedMethods.indexOf(config.method));
+	    if(allowedMethods.indexOf(config.method) === -1) {
 	        config.headers[headerName] = 
-		    $injector.get('$cookies').get(cookieName);    
+		    $injector.get('$cookies').get(cookieName);   
+		console.log(config.headers);
 	    }
 	    return config;
 	}

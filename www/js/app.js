@@ -19,6 +19,9 @@
     
     function restangular(RestangularProvider) {
 	RestangularProvider.setRequestSuffix('/');
+        RestangularProvider.setDefaultHttpFields({
+		timeout: 6000
+	});
     }
 
     function platform($ionicPlatform) {
