@@ -6,6 +6,6 @@
 	.config(restangularConfig);
 
    function restangularConfig(RestangularProvider){
-        RestangularProvider.setBaseUrl('http://127.0.0.1:8100/api');   
+        RestangularProvider.setBaseUrl('http://localhost:8100/api');   
    }
 })();

@@ -8,5 +8,11 @@
   "gulpStartupTasks": [
     "sass",
     "watch"
+  ],
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:8100/api"
+    }
   ]
 }

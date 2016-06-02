@@ -7,7 +7,7 @@
     function csrfInterceptor($injector){
         var headerName = 'X-CSRFToken';
 	var cookieName = 'csrftoken';
-	var allowedMethods = ['POST'];
+	var allowedMethods = ['GET'];
 
 	var factory = {
 	    request:request
