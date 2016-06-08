@@ -19,8 +19,8 @@
 	    console.log(allowedMethods.indexOf(config.method));
 	    if(allowedMethods.indexOf(config.method) === -1) {
 	        config.headers[headerName] = 
-		    $injector.get('$cookies').get(cookieName);   
-		console.log(config.headers);
+		    $injector.get('$cookies').get(cookieName); 
+	         console.log(config.headers);
 	    }
 	    return config;
 	}
