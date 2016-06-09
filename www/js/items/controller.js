@@ -7,10 +7,16 @@
     function ItemsController(
 	    $scope,
 	    $state,
-	    $ionicLoading)
+	    $ionicLoading,
+	    authService)
     {
         console.log('loading Controller');
         var vm = this;
+	vm.logout = logout;
+       
+        function logout(){
+	    return authService.logout();
+	}
 
     }
  })();

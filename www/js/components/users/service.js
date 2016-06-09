@@ -9,7 +9,8 @@
          var userKey = 'loggedInUser';
          var factory = {
 	     set:set,
-	     get:get
+	     get:get,
+	     clear:clear
 	 };
 
 	 return factory;
