@@ -1,8 +1,5 @@
-<ion-view hide-nav-bar="true" cache-view="false">
-    <div class="bar bar-positive">
-      <h1 class="title">Iniciar Sesion</h1>
-    </div>
-      <ion-content class="has-header">
+<ion-view hide-nav-bar="true" cache-view="false"> 
+      <ion-content class="login" >
         <form novalidate name="LoginForm">
           <div class="list list-inset">
             <label class="item item-input">
@@ -26,7 +23,7 @@
 	       ng-disabled="LoginForm.$invalid"
 	       ng-click="vm.login(vm.credentials)"
                ng-autodisable>
-               Iniciar
+               Login
             </button>
           </div>
         </form>
