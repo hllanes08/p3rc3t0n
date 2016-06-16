@@ -21,12 +21,11 @@
 	   </ion-header-bar>
     	<ion-content scroll="false">
 		<div class="list">
-		  <a  ng-repeat="item in vm.items" 
-		      class="item item-avatar">
-			<img ng-src="{{item.thumbnail}}">
-			</img>
-			<span ng-bind="item.name"></span>
-		  </a>
+		  <div  ng-repeat="item_type in vm.item_types"
+		      class="item item-divider"
+		      ng-click="vm.onCategorySelected(category)">
+		     {{ item_type.name}}
+		  </div>
 		</div>
   	</ion-content>
   </ion-side-menu>

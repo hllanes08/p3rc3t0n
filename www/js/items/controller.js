@@ -14,19 +14,22 @@
         var vm = this;
 	vm.logout = logout;
 	vm.assignItems = assignItems;
-	vm.items = [];
-        vm.onIonicViewLoaded = onIonicViewLoaded; 
+	vm.item_types = [];
+        vm.onIonicViewLoaded = onIonicViewLoaded;
+	vm.onCategorySelected=onCategorySelected; 
 	$scope.$on('$ionicView.loaded',vm.onIonicViewLoaded)
         function logout(){
 	    return authService.logout();
 	}
 	function onIonicViewLoaded(){
-	   Restangular.all('items')
+	   Restangular.all('itemtypes')
 	       .getList()
 	       .then(assignItems);
 	}
+	function onCategorySelected(category){
+	}
 	function assignItems(response){
-	   vm.items = response.plain();
+	   vm.item_types = response.plain();
 	}
     }
  })();
