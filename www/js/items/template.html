@@ -22,8 +22,8 @@
     	<ion-content scroll="false">
 		<div class="list">
 		  <div  ng-repeat="item_type in vm.item_types"
-		      class="item item-divider"
-		      ng-click="vm.onCategorySelected(category)">
+		      class="item item-divider {{item_type.icon_class}}"
+		      ng-click="vm.onCategorySelected(item_type)">
 		     {{ item_type.name}}
 		  </div>
 		</div>

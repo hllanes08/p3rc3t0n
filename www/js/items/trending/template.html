@@ -1,0 +1,12 @@
+<h2>Here i am</h2>
+<ion-view view-title="Tendencia">
+   <ion-content class="has-subheader"> 
+      <div class="list">
+	 <a class="item item-avatar"
+	    ng-repeat="item in vm.items">
+	   <img ng-src="item.thumbnail">
+   	   <h2>{{item.name}}</h2>
+   	</a>
+      </div>
+   </ion-content>
+</ion-view>
