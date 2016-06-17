@@ -19,7 +19,7 @@
 	vm.onCategorySelected = onCategorySelected; 
 	$scope.$on('$ionicView.loaded',vm.onIonicViewLoaded)
         function logout(){
-	    return authService.logout();
+	    //return authService.logout();
 	}
 	function onIonicViewLoaded(){
 	   Restangular.all('itemtypes')
