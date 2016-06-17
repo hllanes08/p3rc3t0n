@@ -7,7 +7,7 @@
         $stateProvider.state('items',{
   	    url: '/items',
   	    views: {
-          '': {
+            '': {
   		    templateUrl: 'js/items/template.html',
   		    controller: 'ItemsController',
   		    controllerAs: 'vm'

@@ -10,7 +10,6 @@
 	    Restangular
 	    )
     {
-	console.log("I am controller");
      	var vm = this;
 	vm.items = [];
 	vm.onIonicViewLoaded = onIonicViewLoaded();

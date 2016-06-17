@@ -9,8 +9,8 @@
         $stateProvider.state('items.trending', {
 	   url: '/trending',
 	    views: {
-	    '' : {
-		    temapleteUrl: 'js/items/trending/template.html',
+	    'content@items' : {
+		   templateUrl: 'js/items/trending/template.html',
 		   controller: 'TrendingController',
 		   controllerAs: 'vm'
 	         }
