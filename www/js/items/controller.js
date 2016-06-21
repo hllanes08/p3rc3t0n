@@ -25,7 +25,8 @@
 	   Restangular.all('itemtypes')
 	       .getList()
 	       .then(assignItems);
-	   $state.go('items.trending');
+	   //$state.go('items.trending');
+	   
 	}
 	function onCategorySelected(item_type){
 	    $state.go('items.trending',{
