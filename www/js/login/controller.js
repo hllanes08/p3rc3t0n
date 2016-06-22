@@ -38,7 +38,7 @@
     }
     function onViewEntered(){
         $ionicHistory.clearHistory();
-	      $ionicHistory.clearCache();
+	$ionicHistory.clearCache();
     }
   }
 })();

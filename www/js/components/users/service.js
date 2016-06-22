@@ -16,11 +16,13 @@
 	 return factory;
 
 	 function get(){
-             localStorageService.get(userKey);
+            // return localStorageService.get(userKey);
+	    return JSON.parse(window.localStorage.getItem(userKey));
 	 }
 
 	 function set(newUser){
-             localStorageService.set(userKey,newUser);		 
+             //localStorageService.set(userKey,newUser);	
+	     window.localStorage.setItem(userKey,JSON.stringify(newUser));	 
 	 }
 	 function clear(){
 	     return localStorageService.remove(userKey); 
