@@ -1,5 +1,10 @@
 <ion-view view-title="Tendencia">
-   <ion-content class="has-subheader"> 
+    <ion-content class="has-subheader"> 
+      <ion-refresher on-refresh="vm.refreshItems()">
+      </ion-refresher>
+      <div class="padding text-center" ng-if="vm.isStartingItems">
+          <ion-spinner></ion-spinner>
+      </div>
       <div class="list">
 	 <a class="item item-avatar"
 	    ng-repeat="item in vm.items">

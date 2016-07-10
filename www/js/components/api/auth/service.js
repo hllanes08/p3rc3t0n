@@ -7,7 +7,7 @@
 
 
     function authService(
-        $q,$state,Restangular,userService
+        $q,$state,Restangular,userService,permissionsService
      ) {
 
 	var factory = {
@@ -15,7 +15,7 @@
            logout: logout
 	}
 
-        return factory;
+        return factory;	
 
 	function login(credentials){
 	    var request = {
@@ -37,11 +37,17 @@
 	    }
 	}
 	function fetchPermissions(user){
-	   // return Restangular
-	     //       .all('auth')
-	       //     .all('groups')
-	         //   .getL
-
+	   return Restangular
+	            .all('auth')
+	            .all('groups')
+	            .getList()
+		    .then(setPermissions);
+ 		function setPermissions(response){
+	    		var permissions = response.plain();
+	    		permissionsService.set(permissions);
+	    		return user;
+	
+		}
 	}
 	function logout(){
             userService.clear();

@@ -7,7 +7,11 @@
    	         <button
                class="button button-icon icon ion-navicon"
 	             menu-toggle>
-    	        </button>
+	     </button>
+	     <a class="button"
+		ng-show="vm.addItem" 
+		>Agregar
+	      </a>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="content"></ion-nav-view>
@@ -19,7 +23,7 @@
 	          Perception
 	        </h1>
 	   </ion-header-bar>
-    	<ion-content scroll="false">
+	   <ion-content scroll="false"> 
 		<div class="list">
 		  <div  ng-repeat="item_type in vm.item_types"
 		      class="item item-divider {{item_type.icon_class}}"
