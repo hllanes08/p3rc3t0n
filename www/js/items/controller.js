@@ -9,13 +9,14 @@
 	    $state,
 	    $ionicLoading,
 	    authService,
-	    Restangular)
+	    Restangular,
+	    permissionsService)
     {
         var vm = this;
 	vm.logout = logout;
 	vm.assignItems = assignItems;
 	vm.item_types = [];
-        vm.onIonicViewLoaded = onIonicViewLoaded;
+       vm.onIonicViewLoaded = onIonicViewLoaded;
 	vm.onCategorySelected = onCategorySelected; 
 	$scope.$on('$ionicView.loaded',vm.onIonicViewLoaded)
         function logout(){

@@ -17,7 +17,7 @@
 	return factory;
 	
 	function get(){
-	    return JSON.parse(window.localStorage.get(rolesKey));
+	    return JSON.parse(window.localStorage.getItem(rolesKey));
 	}	
 	function set(roles){
 	    window.localStorage.setItem(rolesKey,JSON.stringify(roles));
@@ -35,7 +35,7 @@
 	    var hasPermission = _.find(hasRole.permissions,{
 	    	codename: permission
 	    });
-	    if(!hasPermissions){
+	    if(!hasPermission){
 		return false;
 	    }
 	    return true;

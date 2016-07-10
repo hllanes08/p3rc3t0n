@@ -7,12 +7,15 @@
     function TrendingController(
 	    $scope,
 	    $state,
-	    Restangular
+	    Restangular,
+	    permissionsService
 	    )
     {
      	var vm = this;
 	vm.items = [];
 	vm.refreshItems = refreshItems;
+	vm.role = 'Gods';
+	vm.canAddItem = permissionsService.hasRolePermissions(vm.role,'add_item'); 
 	vm.onIonicViewLoaded = onIonicViewLoaded();
 	$scope.$on('$ionicView.loaded',vm.onIonicViewLoaded);
 	function  onIonicViewLoaded(){
