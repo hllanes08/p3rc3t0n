@@ -25,7 +25,7 @@
 	     window.localStorage.setItem(userKey,JSON.stringify(newUser));	 
 	 }
 	 function clear(){
-	     return localStorageService.remove(userKey); 
+	     return window.localStorage.removeItem(userKey); 
 	 }
     }
 })();
