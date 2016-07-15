@@ -6,6 +6,6 @@
 	.config(restangularConfig);
 
    function restangularConfig(RestangularProvider){
-        RestangularProvider.setBaseUrl('http://localhost:8100/api');   
+        RestangularProvider.setBaseUrl('http://p3rception.herokuapp.com/api');   
    }
 })();
