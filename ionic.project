@@ -12,7 +12,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://p3rception.herokuapp.com/api"
+      "proxyUrl": "http://localhost:8100/api"
     }
   ]
 }

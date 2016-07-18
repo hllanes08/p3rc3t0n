@@ -12,7 +12,8 @@
 
 	var factory = {
 	   login: login,
-           logout: logout
+           logout: logout,
+	   register: register
 	}
 
         return factory;	
@@ -36,7 +37,7 @@
 		    return user;
 	    }
 	}
-	function fetchPermissions(user){
+	function fetchPermissions(user){ 
 	   return Restangular
 	            .all('auth')
 	            .all('groups')
@@ -52,6 +53,21 @@
 	function logout(){
             userService.clear();
 	    $state.go('login',{},{reload:true});
+	}
+	function register(user){
+	   var request = {
+		username: user.username,
+		email:  user.email,
+		password: user.password
+	   };
+	    return Restangular
+		       .all('auth')
+		       .customPOST(request,'user')
+		       .then(onRegisterSuccess);
+	       	             
+	}
+	function onRegisterSuccess(response){
+	    console.log(response.plain());
 	}
     }
 
