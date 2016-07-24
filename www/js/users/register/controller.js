@@ -23,6 +23,7 @@
     	    return authService
 		    .register(user)
 		    .catch(notifyFailure);
+	    $ionicLoading.hide();
 
 	}
 	function notifyFailure(error){
@@ -30,7 +31,7 @@
 	    if(error.status === 400){
 		for(var property in error.data){ 
 		  vm.errors[property] = 'has_required';
-	}
+		}
 	       if(error.data.username){	
       	        $ionicPopup.alert({
 	         	title: 'Advertencia',

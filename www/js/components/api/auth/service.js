@@ -56,9 +56,9 @@
 	}
 	function register(user){
 	   var request = {
-		username: user.username,
-		email:  user.email,
-		password: user.password
+		username: user!==undefined ?  user.username : null,
+		email: user!==undefined ?  user.email : null ,
+		password: user!==undefined ? user.password : null
 	   };
 	    return Restangular
 		       .all('auth')

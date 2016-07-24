@@ -4,8 +4,8 @@
 	<h1 class="title">Registro</h1>	
     </ion-header-bar>
     <ion-content class="has-header" >
-    	<div class="list list-inset {{vm.errors['username']}}" >
-		<label class="item item-input" >
+    	<div class="list list-inset " >
+		<label class="item item-input {{ vm.errors['username']}}">
 		 <i class="icon ion-person placeholder-icon"></i>
 		 <input type="text" required placeholder="username" ng-model="vm.user.username"/>
 	    </label>
@@ -13,11 +13,11 @@
 		<i class="icon ion-email placeholder-icon"></i>
 		<input type="text" required placeholder="email@email.com" ng-model="vm.user.email"/>
 	    </label>
-	    <label class="item item-input {{vm.errors['password']}}">
+	    <label class="item item-input {{ vm.errors['password'] }}">
 		 <i class="icon ion-locked placeholder-icon"></i>   
 		 <input type="password"  required placeholder="password" ng-model="vm.user.password" />
 	    </label>
-	    <label class="item item-input {{vm.errors['password']}}">
+	    <label class="item item-input {{ vm.errors['password']}}">
 		 <i class="icon ion-locked placeholder-icon"></i>   
 		 <input type="password" required placeholder="password confirmation" ng-model="vm.user.password_confirmation"/>
 	      </label>
