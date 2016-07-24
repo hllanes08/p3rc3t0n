@@ -62,7 +62,7 @@
 	   };
 	    return Restangular
 		       .all('auth')
-		       .customPOST(request,'user')
+		       .customPOST(request,'register')
 		       .then(onRegisterSuccess);
 	       	             
 	}

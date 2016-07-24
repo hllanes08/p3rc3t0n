@@ -2,3 +2,7 @@
 .login{
     top:20%;
 }
+.has_required{
+    border: 1px solid #B83E2C;
+    padding:1px;
+}
