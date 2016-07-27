@@ -35,11 +35,21 @@
 	       if(error.data.username){	
       	        $ionicPopup.alert({
 	         	title: 'Advertencia',
-		        template: error.data.username[0],
+		        template:'Este nombre de usuario ya existe',
 		        okTexr: 'Aceptar',
 		        okType: 'button-positive'
 	         });
 	       }
+	       else if(error.data.email){
+	        $ionicPopup.alert({
+	         	title: 'Advertencia',
+		        template: 'Este email ya existe',
+		        okTexr: 'Aceptar',
+		        okType: 'button-positive'
+	         });
+
+	       }
+	       
 	     }
 	}
 
