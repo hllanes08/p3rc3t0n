@@ -3,7 +3,7 @@
     angular
 	.module('app')
 	.controller('RegisterController',RegisterController);
-
+    
     function RegisterController(
 	    $scope,
 	    $state,
@@ -27,15 +27,16 @@
 
 	}
 	function notifyFailure(error){
+	    vm.erros = [];
 	    $ionicLoading.hide();
 	    if(error.status === 400){
-		for(var property in error.data){ 
-		  vm.errors[property] = 'has_required';
+		for(var property in errors)
+		    vm.errors[property] = 'has_required';
 		}
 	       if(error.data.username){	
       	        $ionicPopup.alert({
 	         	title: 'Advertencia',
-		        template:'Este nombre de usuario ya existe',
+		        template: error.data.username,
 		        okTexr: 'Aceptar',
 		        okType: 'button-positive'
 	         });
@@ -43,16 +44,13 @@
 	       else if(error.data.email){
 	        $ionicPopup.alert({
 	         	title: 'Advertencia',
-		        template: 'Este email ya existe',
+		        template: `Email ${error.data.email}`,
 		        okTexr: 'Aceptar',
 		        okType: 'button-positive'
 	         });
 
 	       }
 	       
-	     }
+	    }
 	}
-
-    }
-
 })();

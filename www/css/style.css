@@ -2,7 +2,10 @@
 .login{
     top:20%;
 }
+.item-input{
+    border-radius:12px !important;
+    margin: 2px;
+}
 .has_required{
-    border: 1px solid #B83E2C;
-    padding:1px;
+    border: 1px solid #387ef5 !important;
 }

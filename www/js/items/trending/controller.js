@@ -8,8 +8,7 @@
 	    $scope,
 	    $state,
 	    Restangular,
-	    permissionsService
-	    )
+	    permissionsService)
     {
      	var vm = this;
 	vm.items = [];
@@ -20,8 +19,8 @@
 	$scope.$on('$ionicView.loaded',vm.onIonicViewLoaded);
 	function  onIonicViewLoaded(){
 	    vm.isStartingItems = true;
-	    Restangular.all('items')
-	        .getList()
+	    Restangular.all()
+	       .getList()
        	       .then(assignTrendings);
             vm.isStartingItems = false;	    
 	}   
